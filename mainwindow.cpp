@@ -1,6 +1,7 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 #include<QGraphicsPixmapItem>
+
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow)
@@ -10,16 +11,24 @@ MainWindow::MainWindow(QWidget *parent) :
     v=new QGraphicsView(this);
     v->setFixedSize(900,900);//view pos
     v->setGeometry(0,0,900,900);
-   mybird=new bird;
+   mybird = new bird();
    mybird->setFlag(QGraphicsItem::ItemIsFocusable);
    mybird->setFocus();
+
+   barriers = new barrier();
+   barriers->setFlag(QGraphicsItem::ItemIsFocusable);
+   barriers->setFocus();
+
    //scene
+
    sc=new QGraphicsScene;
     sc->addItem(mybird);
-     sc->setSceneRect(v->pos().x(),v->pos().y(),900,900);//scene pos
+    sc->addItem(barriers);
+    sc->setSceneRect(v->pos().x(),v->pos().y(),900,900);//scene pos
     QPixmap pix(":/new/prefix1/sky111.jpg");
     sc->addPixmap(pix);
     mybird->setZValue(1);
+    barriers->setZValue(1);
 
     //scene
     ///from site
@@ -29,14 +38,20 @@ MainWindow::MainWindow(QWidget *parent) :
     ///from site
     v->setScene(sc);
     qDebug()<<"view "<<mybird->brush().color();
-v->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
-v->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
+    v->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
+    v->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
 
-mybird->setRect(v->rect().width()/2-300,v->rect().height()/2,100,100);
-mybird->setBrush(Qt::red);
-mybird->update();
-sc->update();
- v->update();
+    mybird->setRect(70,70,100,100);
+    mybird->setBrush(Qt::red);
+    mybird->update();
+
+    barriers->setRect(500, 500, 60, 400);
+    barriers->setBrush(Qt::green);
+    barriers->update();
+    sc->update();
+    v->update();
+    mybird->start();
+    barriers->start();
 }
 
 MainWindow::~MainWindow()
