@@ -15,7 +15,7 @@ void bird::start()
 {
     QTimer * timer = new QTimer(this);
     connect(timer, SIGNAL(timeout()), this, SLOT(up()));
-    timer->start(150);
+    timer->start(5);
 }
 
 int bird::get_x()
@@ -47,15 +47,16 @@ void bird::up()
 
     }
 
-        setY(pos().y()+40);
+        setY(pos().y()+1);
         set_y(pos().y());
+        qDebug()<<"bird x : "<<pos().x();
 }
 
 void bird::keyPressEvent(QKeyEvent *event)
 {
     if(event->key()==Qt::Key_Up)
     {
-        setY(pos().y()-60);
+        setY(pos().y()-50);
         set_y(pos().y());
     }
 }

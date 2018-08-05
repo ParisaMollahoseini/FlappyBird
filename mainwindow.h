@@ -24,7 +24,7 @@ public:
     QGraphicsScene *sc;
     QGraphicsView *v;
     bird *mybird;
-    barrier * barriers;
+    QVector <barrier *>barriers;
 
 private:
 

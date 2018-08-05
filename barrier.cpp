@@ -15,20 +15,25 @@ void barrier::start()
 {
     QTimer * timer= new QTimer(this);
     connect(timer, SIGNAL(timeout()), this, SLOT(setBarrier()));
-    timer->start(250);
+    timer->start(10);
 }
 
 void barrier::setBarrier()
 {
-    if (pos().x()==bird::get_x() && pos().y()== bird::get_y())
+    if (pos().x()==bird::get_x()-500 && pos().y()+70 == bird::get_y()+500)
     {
         qDebug()<<"you lose";
-        this->~barrier();
     }
 
     else
     {
-        setX(pos().x()-20);
+        setX(pos().x()-1);
+        qDebug()<<"barrier x : "<<pos().x();
+        qDebug()<<"barrier y : "<<pos().y();
     }
-        qDebug()<<"here";
+
+    if (pos().x()<-500)
+    {
+        setX(pos().x()+430);
+    }
 }
