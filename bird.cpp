@@ -8,20 +8,59 @@ bird::bird()
 
 }
 
-void bird::keyPressEvent(QKeyEvent *event)
+bird::~bird()
 {
-if(event->key()==Qt::Key_Up)
-{
-setY(pos().y()-40);
-}
-else if(event->key()==Qt::Key_Down)
-{
-setY(pos().y()+40);
-}
+    qDebug()<<"bird destructor";
 }
 
-//void bird::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget)
-//{
-//    painter->drawEllipse(pos().x(),pos().y(),10,10);
-//    painter->setBrush(Qt::blue);
-//}
+void bird::start()
+{
+    QTimer * timer = new QTimer(this);
+    connect(timer, SIGNAL(timeout()), this, SLOT(up()));
+    timer->start(5);
+}
+
+int bird::get_x()
+{
+    return pos_x;
+}
+
+int bird::get_y()
+{
+    return pos_y;
+}
+
+void bird::set_x(int pos)
+{
+    pos_x=pos;
+}
+
+void bird::set_y(int pos)
+{
+    pos_y=pos;
+}
+
+void bird::up()
+{
+    if (pos().y()>=900)
+    {
+        qDebug()<<"you lose";
+        this->~bird();
+
+    }
+
+        setY(pos().y()+1);
+        set_y(pos().y());
+        qDebug()<<"bird x : "<<pos().x();
+}
+
+void bird::keyPressEvent(QKeyEvent *event)
+{
+    if(event->key()==Qt::Key_Up)
+    {
+        setY(pos().y()-50);
+        set_y(pos().y());
+    }
+}
+int bird::pos_x=0;
+int bird::pos_y=0;
