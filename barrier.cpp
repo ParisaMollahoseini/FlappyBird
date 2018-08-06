@@ -3,6 +3,7 @@
 barrier::barrier()
 {
 
+
 }
 
 barrier::~barrier()
@@ -20,7 +21,7 @@ void barrier::start()
 
 void barrier::setBarrier()
 {
-    if (pos().x()==bird::get_x()-500 && pos().y()+70 == bird::get_y()+500)
+    if (pos().x()==0 && pos().y() == bird::get_y())
     {
         qDebug()<<"you lose";
     }
@@ -28,12 +29,12 @@ void barrier::setBarrier()
     else
     {
         setX(pos().x()-1);
-        qDebug()<<"barrier x : "<<pos().x();
+        qDebug()<<"barrier x : "<<pos().x()<<" xx:"<<rect().x();
         qDebug()<<"barrier y : "<<pos().y();
     }
 
-    if (pos().x()<-500)
+    if (pos().x()<-856)
     {
-        setX(pos().x()+430);
+        setX(pos().x()+945);
     }
 }

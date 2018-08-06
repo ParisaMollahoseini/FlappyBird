@@ -1,7 +1,7 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 #include<QGraphicsPixmapItem>
-
+#include<QMessageBox>
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow)
@@ -28,44 +28,53 @@ MainWindow::MainWindow(QWidget *parent) :
     sc->addItem(barriers[0]);
     sc->addItem(barriers[1]);
 
-    sc->setSceneRect(v->pos().x(),v->pos().y(),900,900);//scene pos
+    sc->setSceneRect(0,0,900,900);//scene pos
+
     QPixmap pix(":/new/prefix1/sky111.jpg");
     sc->addPixmap(pix);
-    mybird->setZValue(1);
-    barriers[0]->setZValue(1);
-    barriers[1]->setZValue(1);
+    mybird->setZValue(2);
+    barriers[0]->setZValue(2);
+    barriers[1]->setZValue(2);
     //scene
-    ///from site
-//    QGraphicsPixmapItem item( QPixmap::fromImage(image));
-//       QGraphicsScene* scene = new QGraphicsScene;
-//       scene->addItem(&item);
-    ///from site
     v->setScene(sc);
     qDebug()<<"view "<<mybird->brush().color();
     v->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
     v->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
 
-    mybird->setRect(70,70,25,25);
+    mybird->setRect(v->pos().x()+50,v->pos().y(),25,25);
+    mybird->setX(50);mybird->setY(0);
+    qDebug()<<"birddddd  x:"<<mybird->x();
     mybird->setBrush(Qt::red);
     mybird->update();
 
-    barriers[0]->setRect(500, 500, 60, 400);
-    barriers[0]->setBrush(Qt::green);
+    barriers[0]->setRect(800,500, 60, 400);
+    barriers[0]->setBrush(Qt::blue);
     barriers[0]->update();
 
-    barriers[1]->setRect(500, 0, 60, 400);
+    barriers[1]->setRect(800,0, 60, 400);
     barriers[1]->setBrush(Qt::green);
     barriers[1]->update();
-
 
     sc->update();
     v->update();
     mybird->start();
     barriers[0]->start();
     barriers[1]->start();
+    connect(mybird,SIGNAL(end()),this,SLOT(endprogram()));
 }
 
 MainWindow::~MainWindow()
 {
     delete ui;
+}
+
+void MainWindow::endprogram()
+{
+
+    delete v;
+    delete sc;
+    delete barriers[0];
+     delete barriers[1];
+    delete mybird;
+     close();
 }

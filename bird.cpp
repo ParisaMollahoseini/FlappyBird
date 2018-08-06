@@ -4,8 +4,6 @@
 #include<QPainter>
 bird::bird()
 {
-
-
 }
 
 bird::~bird()
@@ -44,14 +42,19 @@ void bird::up()
 {
     if (pos().y()>=900)
     {
+        emit end();
         qDebug()<<"you lose";
-        this->~bird();
+        QMessageBox msg;
+        msg.setText("lose");
+        msg.exec();
 
     }
 
         setY(pos().y()+1);
         set_y(pos().y());
         qDebug()<<"bird x : "<<pos().x();
+        qDebug()<<"bird y : "<<pos().y();
+
 }
 
 void bird::keyPressEvent(QKeyEvent *event)

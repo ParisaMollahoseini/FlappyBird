@@ -3,15 +3,12 @@
 #include<QMainWindow>
 #include<QObject>
 #include<QGraphicsRectItem>
-<<<<<<< HEAD
 #include<QPainter>
-=======
 #include <QGraphicsEllipseItem>
->>>>>>> 72d4b0765a4fc2be224a9498bf49300ad7663b44
 #include<QKeyEvent>
 #include<QTimer>
 #include<QDebug>
-
+#include<QMessageBox>
 class bird:public QObject,public QGraphicsEllipseItem
 {
     Q_OBJECT
@@ -34,6 +31,8 @@ public slots:
 
 void keyPressEvent(QKeyEvent *event);
 //void paint(QPainter *, const QStyleOptionGraphicsItem *, QWidget *);
+signals:
+void end();
 };
 
 #endif // BIRD_H
