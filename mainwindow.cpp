@@ -20,7 +20,6 @@ MainWindow::MainWindow(QWidget *parent) :
     QPixmap pix(":/new/prefix1/sky111.jpg");
     sc->addPixmap(pix);
     mybird->setZValue(1);
-
     //scene
     ///from site
 //    QGraphicsPixmapItem item( QPixmap::fromImage(image));

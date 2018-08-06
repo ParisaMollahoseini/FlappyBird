@@ -3,6 +3,7 @@
 #include<QMainWindow>
 #include<QObject>
 #include<QGraphicsRectItem>
+#include<QPainter>
 #include<QKeyEvent>
 class bird:public QObject,public QGraphicsRectItem
 {
@@ -10,6 +11,7 @@ class bird:public QObject,public QGraphicsRectItem
 public:
     bird();
 void keyPressEvent(QKeyEvent *event);
+//void paint(QPainter *, const QStyleOptionGraphicsItem *, QWidget *);
 };
 
 #endif // BIRD_H
