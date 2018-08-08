@@ -58,8 +58,8 @@ MainWindow::MainWindow(QWidget *parent) :
     sc->update();
     v->update();
     mybird->start();
-    barriers[0]->start(mybird);
-    barriers[1]->start(mybird);
+    barriers[0]->start();
+    barriers[1]->start();
     connect(mybird,SIGNAL(end()),this,SLOT(endprogram()));
 
     QTimer * timer = new QTimer(this);

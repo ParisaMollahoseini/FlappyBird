@@ -12,7 +12,7 @@ barrier::~barrier()
 
 }
 
-void barrier::start(bird * mybird)
+void barrier::start()
 {
     QTimer * timer= new QTimer(this);
     connect(timer, SIGNAL(timeout()), this, SLOT(setBarrier()));
