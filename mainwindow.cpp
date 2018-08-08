@@ -75,14 +75,18 @@ MainWindow::~MainWindow()
 void MainWindow::check()
 {
     if (barriers[0]->collidesWithItem(mybird))
-        qDebug()<<"ohhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh";
+        this->endprogram();
 
     if (barriers[1]->collidesWithItem(mybird))
-        qDebug()<<"ohohohohohohohohohohohohohohohohohohohohohooooooooooooooooooooooooooooo";
+        this->endprogram();
 }
 
 void MainWindow::endprogram()
 {
+    QMessageBox *msg = new QMessageBox(this);
+    msg->setText("Game over!!!!!");
+    msg->setStandardButtons(QMessageBox::Ok);
+    msg->exec();
 
     delete v;
     delete sc;

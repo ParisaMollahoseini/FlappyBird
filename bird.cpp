@@ -4,7 +4,7 @@
 #include<QPainter>
 bird::bird()
 {
-    this->
+
 }
 
 bird::~bird()

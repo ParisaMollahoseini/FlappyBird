@@ -10,6 +10,7 @@
 #include "barrier.h"
 #include "bird.h"
 #include <QTimer>
+#include <QMessageBox>
 
 namespace Ui {
 class MainWindow;
