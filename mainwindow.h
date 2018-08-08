@@ -25,7 +25,6 @@ public:
     QGraphicsView *v;
     bird *mybird;
     QVector <barrier *>barriers;
-
 private:
 
     Ui::MainWindow *ui;

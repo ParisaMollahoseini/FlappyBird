@@ -15,8 +15,10 @@ MainWindow::MainWindow(QWidget *parent) :
     v->setGeometry(0,0,900,900);
    mybird = new bird();
    mybird->setFlag(QGraphicsItem::ItemIsFocusable);
-   mybird->setFocus();
-
+   mybird->QGraphicsEllipseItem::setFocus();
+//
+v->setViewportUpdateMode(QGraphicsView::FullViewportUpdate);
+//
    barriers[0] = new barrier();
    barriers[1] = new barrier();
 
@@ -37,15 +39,17 @@ MainWindow::MainWindow(QWidget *parent) :
     barriers[1]->setZValue(2);
     //scene
     v->setScene(sc);
-    qDebug()<<"view "<<mybird->brush().color();
+    qDebug()<<"view "<<mybird->QGraphicsEllipseItem::brush().color();
     v->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
     v->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
 
     mybird->setRect(v->pos().x()+50,v->pos().y(),25,25);
     mybird->setX(50);mybird->setY(0);
-    qDebug()<<"birddddd  x:"<<mybird->x();
-    mybird->setBrush(Qt::red);
+    qDebug()<<"birddddd  x:"<<mybird->QGraphicsEllipseItem::x();
+    mybird->QGraphicsEllipseItem::setBrush(Qt::blue);
     mybird->update();
+
+v->setRenderHint(QPainter::Antialiasing);
 
     barriers[0]->setRect(800,500, 60, 400);
     barriers[0]->setBrush(Qt::blue);
@@ -60,7 +64,7 @@ MainWindow::MainWindow(QWidget *parent) :
     mybird->start();
     barriers[0]->start();
     barriers[1]->start();
-    connect(mybird,SIGNAL(end()),this,SLOT(endprogram()));
+  connect(mybird,SIGNAL(end()),this,SLOT(endprogram()));//?????
 }
 
 MainWindow::~MainWindow()
