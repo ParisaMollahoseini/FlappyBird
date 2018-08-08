@@ -24,8 +24,11 @@ public:
     static int get_y();
     static void set_x(int pos);
     static void set_y(int pos);
-
-
+    QRectF boundingRect();
+//QPainter *painter;
+QPen *pen;
+QPolygon *poly;
+void paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget);
 public slots:
     void up ();
 
@@ -33,6 +36,6 @@ void keyPressEvent(QKeyEvent *event);
 //void paint(QPainter *, const QStyleOptionGraphicsItem *, QWidget *);
 signals:
 void end();
-};
 
+};
 #endif // BIRD_H

@@ -28,8 +28,10 @@ public:
     bird *mybird;
     QVector <barrier *>barriers;
 
+
 public slots:
     void check();
+
 
 private:
 
