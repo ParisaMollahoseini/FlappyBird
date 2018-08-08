@@ -14,7 +14,7 @@ class barrier : public QObject, public QGraphicsRectItem
 public:
     explicit barrier();
     ~barrier();
-    void start ();
+    void start (bird * mybird);
 
 public slots:
     void setBarrier ();

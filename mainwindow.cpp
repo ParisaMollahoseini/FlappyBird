@@ -58,14 +58,27 @@ MainWindow::MainWindow(QWidget *parent) :
     sc->update();
     v->update();
     mybird->start();
-    barriers[0]->start();
-    barriers[1]->start();
+    barriers[0]->start(mybird);
+    barriers[1]->start(mybird);
     connect(mybird,SIGNAL(end()),this,SLOT(endprogram()));
+
+    QTimer * timer = new QTimer(this);
+    connect(timer, SIGNAL(timeout()), this, SLOT(check()));
+    timer->start(10);
 }
 
 MainWindow::~MainWindow()
 {
     delete ui;
+}
+
+void MainWindow::check()
+{
+    if (barriers[0]->collidesWithItem(mybird))
+        qDebug()<<"ohhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh";
+
+    if (barriers[1]->collidesWithItem(mybird))
+        qDebug()<<"ohohohohohohohohohohohohohohohohohohohohohooooooooooooooooooooooooooooo";
 }
 
 void MainWindow::endprogram()
