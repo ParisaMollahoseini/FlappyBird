@@ -78,7 +78,7 @@ void bird::keyPressEvent(QKeyEvent *event)
 {
     if(event->key()==Qt::Key_Up)
     {
-        setY(pos().y()-50);
+        setY(pos().y()-100);
         set_y(pos().y());
     }
 }

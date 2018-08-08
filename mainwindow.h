@@ -9,6 +9,8 @@
 #include <QVector>
 #include "barrier.h"
 #include "bird.h"
+#include <QTimer>
+#include <QMessageBox>
 
 namespace Ui {
 class MainWindow;
@@ -25,6 +27,12 @@ public:
     QGraphicsView *v;
     bird *mybird;
     QVector <barrier *>barriers;
+
+
+public slots:
+    void check();
+
+
 private:
 
     Ui::MainWindow *ui;

@@ -64,7 +64,12 @@ v->setRenderHint(QPainter::Antialiasing);
     mybird->start();
     barriers[0]->start();
     barriers[1]->start();
-  connect(mybird,SIGNAL(end()),this,SLOT(endprogram()));//?????
+      
+    connect(mybird,SIGNAL(end()),this,SLOT(endprogram()));
+
+    QTimer * timer = new QTimer(this);
+    connect(timer, SIGNAL(timeout()), this, SLOT(check()));
+    timer->start(10);
 }
 
 MainWindow::~MainWindow()
@@ -72,8 +77,21 @@ MainWindow::~MainWindow()
     delete ui;
 }
 
+void MainWindow::check()
+{
+    if (barriers[0]->collidesWithItem(mybird))
+        this->endprogram();
+
+    if (barriers[1]->collidesWithItem(mybird))
+        this->endprogram();
+}
+
 void MainWindow::endprogram()
 {
+    QMessageBox *msg = new QMessageBox(this);
+    msg->setText("Game over!!!!!");
+    msg->setStandardButtons(QMessageBox::Ok);
+    msg->exec();
 
     delete v;
     delete sc;
