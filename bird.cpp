@@ -48,12 +48,25 @@ return QRectF(10,10,50,50);
 void bird::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget)
 {
     setFlag(QGraphicsItem::ItemUsesExtendedStyleOption);
+
     pen=new QPen(Qt::red);
     pen->setWidth(5);
+    pen->setBrush(Qt::SolidPattern);
+    pen->setColor(Qt::blue);
+
+    poly=new QPolygon;
+    *poly<<QPoint(130,95);
+    *poly<<QPoint(140,101);
+    *poly<<QPoint(130,102);
+
     painter->setPen(*pen);
     painter->drawEllipse(100,100,25,25);
     painter->drawEllipse(115,90,15,15);
     painter->setViewTransformEnabled(1);
+
+    pen->setBrush(Qt::yellow);
+    painter->setPen(*pen);
+    painter->drawPolygon(*poly);
    }
 
 void bird::up()
@@ -61,11 +74,6 @@ void bird::up()
     if (pos().y()>=900)
     {
         emit end();
-        qDebug()<<"you lose";
-        QMessageBox msg;
-        msg.setText("lose");
-        msg.exec();
-
     }
 
         setY(pos().y()+1);

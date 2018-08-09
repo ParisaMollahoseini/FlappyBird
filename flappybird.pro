@@ -35,7 +35,8 @@ HEADERS += \
     barrier.h
 
 FORMS += \
-        mainwindow.ui
+        mainwindow.ui \
+    gameover.ui
 
 RESOURCES += \
     pic.qrc

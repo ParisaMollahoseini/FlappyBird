@@ -21,17 +21,9 @@ void barrier::start()
 
 void barrier::setBarrier()
 {
-    if (pos().x()==0 && pos().y() == bird::get_y())
-    {
-        qDebug()<<"you lose";
-    }
-
-    else
-    {
         setX(pos().x()-1);
         qDebug()<<"barrier x : "<<pos().x()<<" xx:"<<rect().x();
         qDebug()<<"barrier y : "<<pos().y();
-    }
 
     if (pos().x()<-856)
     {

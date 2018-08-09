@@ -31,8 +31,8 @@ v->setViewportUpdateMode(QGraphicsView::FullViewportUpdate);
     sc->addItem(barriers[1]);
 
     sc->setSceneRect(0,0,900,900);//scene pos
-
-    QPixmap pix(":/new/prefix1/sky111.jpg");
+    QPixmap pix(":/game-background.jpg");
+    //QPixmap pix(":/new/prefix1/sky111.jpg");
     sc->addPixmap(pix);
     mybird->setZValue(2);
     barriers[0]->setZValue(2);
@@ -88,15 +88,14 @@ void MainWindow::check()
 
 void MainWindow::endprogram()
 {
-    QMessageBox *msg = new QMessageBox(this);
-    msg->setText("Game over!!!!!");
-    msg->setStandardButtons(QMessageBox::Ok);
-    msg->exec();
+    close();
+    show();
+    ui->setupUi(this);
 
-    delete v;
-    delete sc;
-    delete barriers[0];
-     delete barriers[1];
-    delete mybird;
-     close();
+
+//    delete sc;
+//    delete v;
+
+
+
 }
