@@ -2,22 +2,29 @@
 #include "ui_mainwindow.h"
 #include<QGraphicsPixmapItem>
 #include<QMessageBox>
+#include<QPushButton>
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow)
 {
+    ui->setupUi(this);
+
+    gmover=new gameover;
+
     barriers.resize(2);
 
-   setGeometry(500,100,900,900);
-   setFixedSize(900,900);
-    v=new QGraphicsView(this);
-    v->setFixedSize(900,900);//view pos
-    v->setGeometry(0,0,900,900);
+//  setGeometry(500,100,900,900);
+//   setFixedSize(900,900);
+
+   // v=new QGraphicsView(this);
+    ui->gv->setFixedSize(900,900);//view pos
+    ui->gv->setGeometry(0,0,900,900);
+
    mybird = new bird();
    mybird->setFlag(QGraphicsItem::ItemIsFocusable);
    mybird->QGraphicsEllipseItem::setFocus();
 //
-v->setViewportUpdateMode(QGraphicsView::FullViewportUpdate);
+    ui->gv->setViewportUpdateMode(QGraphicsView::FullViewportUpdate);
 //
    barriers[0] = new barrier();
    barriers[1] = new barrier();
@@ -38,18 +45,18 @@ v->setViewportUpdateMode(QGraphicsView::FullViewportUpdate);
     barriers[0]->setZValue(2);
     barriers[1]->setZValue(2);
     //scene
-    v->setScene(sc);
+    ui->gv->setScene(sc);
     qDebug()<<"view "<<mybird->QGraphicsEllipseItem::brush().color();
-    v->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
-    v->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
+    ui->gv->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
+    ui->gv->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
 
-    mybird->setRect(v->pos().x()+50,v->pos().y(),25,25);
+    mybird->setRect(ui->gv->pos().x()+50,ui->gv->pos().y(),25,25);
     mybird->setX(50);mybird->setY(0);
     qDebug()<<"birddddd  x:"<<mybird->QGraphicsEllipseItem::x();
     mybird->QGraphicsEllipseItem::setBrush(Qt::blue);
     mybird->update();
 
-v->setRenderHint(QPainter::Antialiasing);
+    ui->gv->setRenderHint(QPainter::Antialiasing);
 
     barriers[0]->setRect(800,500, 60, 400);
     barriers[0]->setBrush(Qt::blue);
@@ -60,14 +67,17 @@ v->setRenderHint(QPainter::Antialiasing);
     barriers[1]->update();
 
     sc->update();
-    v->update();
+    ui->gv->update();
     mybird->start();
     barriers[0]->start();
     barriers[1]->start();
-      
-    connect(mybird,SIGNAL(end()),this,SLOT(endprogram()));
 
-    QTimer * timer = new QTimer(this);
+      //connects
+    connect(mybird,SIGNAL(end()),this,SLOT(endprogram()));
+    connect(gmover,SIGNAL(emitsignalofstartingmainwindow()),this,SLOT(startagain()));
+    //connects
+
+    timer = new QTimer(this);
     connect(timer, SIGNAL(timeout()), this, SLOT(check()));
     timer->start(10);
 }
@@ -86,16 +96,22 @@ void MainWindow::check()
         this->endprogram();
 }
 
+void MainWindow::startagain()
+{
+    ui=new Ui::MainWindow;
+    ui->setupUi(this);
+}
+
 void MainWindow::endprogram()
 {
     close();
-    show();
-    ui->setupUi(this);
 
+    //delete mybird;
+    timer->stop();
+    mybird->timer->stop();
+    barriers[0]->timer->stop();
+    barriers[1]->timer->stop();
 
-//    delete sc;
-//    delete v;
-
-
+    gmover->start();
 
 }

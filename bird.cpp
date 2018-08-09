@@ -15,7 +15,7 @@ bird::~bird()
 
 void bird::start()
 {
-    QTimer * timer = new QTimer(this);
+    timer = new QTimer(this);
     connect(timer, SIGNAL(timeout()), this, SLOT(up()));
     timer->start(5);
 }

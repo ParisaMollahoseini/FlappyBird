@@ -27,12 +27,14 @@ SOURCES += \
         main.cpp \
         mainwindow.cpp \
     bird.cpp \
-    barrier.cpp
+    barrier.cpp \
+    gameover.cpp
 
 HEADERS += \
         mainwindow.h \
     bird.h \
-    barrier.h
+    barrier.h \
+    gameover.h
 
 FORMS += \
         mainwindow.ui \

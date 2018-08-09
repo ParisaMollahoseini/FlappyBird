@@ -28,6 +28,7 @@ public:
 //QPainter *painter;
 QPen *pen;
 QPolygon *poly;
+QTimer * timer;
 void paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget);
 public slots:
     void up ();

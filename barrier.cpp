@@ -14,7 +14,7 @@ barrier::~barrier()
 
 void barrier::start()
 {
-    QTimer * timer= new QTimer(this);
+    timer= new QTimer(this);
     connect(timer, SIGNAL(timeout()), this, SLOT(setBarrier()));
     timer->start(10);
 }

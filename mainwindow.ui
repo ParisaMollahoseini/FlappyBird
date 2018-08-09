@@ -14,60 +14,17 @@
    <string>MainWindow</string>
   </property>
   <property name="styleSheet">
-   <string notr="true">background-image: url(:/new/prefix1/sky111.jpg);</string>
+   <string notr="true"/>
   </property>
   <widget class="QWidget" name="centralWidget">
-   <widget class="QPushButton" name="Again">
+   <widget class="QGraphicsView" name="gv">
     <property name="geometry">
      <rect>
-      <x>270</x>
-      <y>540</y>
-      <width>291</width>
-      <height>121</height>
+      <x>20</x>
+      <y>30</y>
+      <width>256</width>
+      <height>192</height>
      </rect>
-    </property>
-    <property name="font">
-     <font>
-      <family>Agency FB</family>
-      <pointsize>28</pointsize>
-     </font>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">background-color: qlineargradient(spread:pad, x1:0.109, y1:0.114, x2:1, y2:1, stop:0 rgba(164, 138, 77, 255), stop:1 rgba(235, 97, 61, 255));</string>
-    </property>
-    <property name="text">
-     <string>Play Again</string>
-    </property>
-   </widget>
-   <widget class="QLabel" name="label">
-    <property name="geometry">
-     <rect>
-      <x>140</x>
-      <y>100</y>
-      <width>571</width>
-      <height>251</height>
-     </rect>
-    </property>
-    <property name="font">
-     <font>
-      <family>Agency FB</family>
-      <pointsize>72</pointsize>
-     </font>
-    </property>
-    <property name="toolTipDuration">
-     <number>-1</number>
-    </property>
-    <property name="autoFillBackground">
-     <bool>false</bool>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">background-color: qlineargradient(spread:pad, x1:0.109, y1:0.114, x2:1, y2:1, stop:0 rgba(164, 138, 77, 255), stop:1 rgba(235, 97, 61, 255));</string>
-    </property>
-    <property name="text">
-     <string>Game Over</string>
-    </property>
-    <property name="alignment">
-     <set>Qt::AlignCenter</set>
     </property>
    </widget>
   </widget>

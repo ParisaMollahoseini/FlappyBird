@@ -15,7 +15,7 @@ public:
     explicit barrier();
     ~barrier();
     void start ();
-
+    QTimer * timer;
 public slots:
     void setBarrier ();
 };
