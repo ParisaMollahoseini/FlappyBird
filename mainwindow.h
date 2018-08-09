@@ -30,6 +30,7 @@ public:
     QVector <barrier *>barriers;
     gameover *gmover;
     QTimer * timer;
+    void firstthings();
 public slots:
     void check();
     void startagain();

@@ -8,15 +8,21 @@ MainWindow::MainWindow(QWidget *parent) :
     ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
+    firstthings();
 
+}
+
+MainWindow::~MainWindow()
+{
+    delete ui;
+}
+
+void MainWindow::firstthings()
+{
     gmover=new gameover;
 
     barriers.resize(2);
 
-//  setGeometry(500,100,900,900);
-//   setFixedSize(900,900);
-
-   // v=new QGraphicsView(this);
     ui->gv->setFixedSize(900,900);//view pos
     ui->gv->setGeometry(0,0,900,900);
 
@@ -39,7 +45,7 @@ MainWindow::MainWindow(QWidget *parent) :
 
     sc->setSceneRect(0,0,900,900);//scene pos
     QPixmap pix(":/game-background.jpg");
-    //QPixmap pix(":/new/prefix1/sky111.jpg");
+
     sc->addPixmap(pix);
     mybird->setZValue(2);
     barriers[0]->setZValue(2);
@@ -82,11 +88,6 @@ MainWindow::MainWindow(QWidget *parent) :
     timer->start(10);
 }
 
-MainWindow::~MainWindow()
-{
-    delete ui;
-}
-
 void MainWindow::check()
 {
     if (barriers[0]->collidesWithItem(mybird))
@@ -98,15 +99,17 @@ void MainWindow::check()
 
 void MainWindow::startagain()
 {
+    qDebug()<<"omad...";
     ui=new Ui::MainWindow;
     ui->setupUi(this);
+    firstthings();
+    show();
 }
 
 void MainWindow::endprogram()
 {
     close();
 
-    //delete mybird;
     timer->stop();
     mybird->timer->stop();
     barriers[0]->timer->stop();

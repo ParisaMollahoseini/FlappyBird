@@ -20,5 +20,6 @@ void gameover::start()
 }
 void gameover::on_again_clicked()
 {
+    close();
     emit emitsignalofstartingmainwindow();
 }
