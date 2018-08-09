@@ -5,9 +5,10 @@
 #include<QStyleOptionGraphicsItem>
 bird::bird()
 {
-
+time=new QElapsedTimer;
+time->start();
 }
-
+int bird::bestscore=0;
 bird::~bird()
 {
     qDebug()<<"bird destructor";

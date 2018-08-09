@@ -12,10 +12,12 @@ gameover::~gameover()
     delete ui;
 }
 
-void gameover::start()
+void gameover::start(int score,int bestscore)
 {
     ui=new Ui::gameover;
     ui->setupUi(this);
+    ui->lbest->setText(QString::number(bestscore));
+    ui->lscore->setText(QString::number(score));
     show();
 }
 void gameover::on_again_clicked()

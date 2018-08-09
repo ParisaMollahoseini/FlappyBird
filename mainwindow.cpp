@@ -27,6 +27,7 @@ void MainWindow::firstthings()
     ui->gv->setGeometry(0,0,900,900);
 
    mybird = new bird();
+   mybird->time->restart();
    mybird->setFlag(QGraphicsItem::ItemIsFocusable);
    mybird->QGraphicsEllipseItem::setFocus();
 //
@@ -108,13 +109,18 @@ void MainWindow::startagain()
 
 void MainWindow::endprogram()
 {
+    mybird->score=mybird->time->elapsed()/1000;
+    qDebug()<<"time is"<<mybird->time->elapsed();
+    if(mybird->score>mybird->bestscore)
+        mybird->bestscore=mybird->score;
+
     close();
+
+    gmover->start(mybird->score,mybird->bestscore);
 
     timer->stop();
     mybird->timer->stop();
     barriers[0]->timer->stop();
     barriers[1]->timer->stop();
-
-    gmover->start();
 
 }

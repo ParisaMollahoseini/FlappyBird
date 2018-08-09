@@ -9,6 +9,7 @@
 #include<QTimer>
 #include<QDebug>
 #include<QMessageBox>
+#include<QElapsedTimer>
 class bird:public QObject,public QGraphicsEllipseItem
 {
     Q_OBJECT
@@ -25,16 +26,22 @@ public:
     static void set_x(int pos);
     static void set_y(int pos);
     QRectF boundingRect();
-//QPainter *painter;
+static int bestscore;
+int score=0;
+
 QPen *pen;
 QPolygon *poly;
+
+QElapsedTimer *time;
 QTimer * timer;
+
 void paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget);
+
 public slots:
     void up ();
 
 void keyPressEvent(QKeyEvent *event);
-//void paint(QPainter *, const QStyleOptionGraphicsItem *, QWidget *);
+
 signals:
 void end();
 

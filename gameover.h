@@ -14,7 +14,7 @@ class gameover : public QMainWindow
 public:
     explicit gameover(QWidget *parent = 0);
     ~gameover();
-    void start();
+    void start(int score,int bestscore);
     Ui::gameover *ui;
 signals:
     void emitsignalofstartingmainwindow();
