@@ -6,21 +6,24 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1052</width>
-    <height>670</height>
+    <width>903</width>
+    <height>897</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>MainWindow</string>
   </property>
+  <property name="styleSheet">
+   <string notr="true"/>
+  </property>
   <widget class="QWidget" name="centralWidget">
    <widget class="QGraphicsView" name="gv">
     <property name="geometry">
      <rect>
-      <x>0</x>
-      <y>0</y>
-      <width>1051</width>
-      <height>631</height>
+      <x>20</x>
+      <y>30</y>
+      <width>256</width>
+      <height>192</height>
      </rect>
     </property>
    </widget>
@@ -30,7 +33,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>1052</width>
+     <width>903</width>
      <height>26</height>
     </rect>
    </property>

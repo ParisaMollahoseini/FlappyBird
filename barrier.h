@@ -6,6 +6,7 @@
 #include <QGraphicsRectItem>
 #include <QTimer>
 #include "bird.h"
+#include<QMessageBox>
 
 class barrier : public QObject, public QGraphicsRectItem
 {
@@ -13,9 +14,8 @@ class barrier : public QObject, public QGraphicsRectItem
 public:
     explicit barrier();
     ~barrier();
-
     void start ();
-
+    QTimer * timer;
 public slots:
     void setBarrier ();
 };
