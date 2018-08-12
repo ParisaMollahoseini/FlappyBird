@@ -3,12 +3,15 @@
 #include<QGraphicsEffect>
 #include<QPainter>
 #include<QStyleOptionGraphicsItem>
+
 bird::bird()
 {
-time=new QElapsedTimer;
-time->start();
+    time=new QElapsedTimer;
+    time->start();
 }
+
 int bird::bestscore=0;
+
 bird::~bird()
 {
     qDebug()<<"bird destructor";
@@ -56,13 +59,13 @@ void bird::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWid
     pen->setColor(Qt::blue);
 
     poly=new QPolygon;
-    *poly<<QPoint(130,95);
-    *poly<<QPoint(140,101);
-    *poly<<QPoint(130,102);
+    *poly<<QPoint(110,145);
+    *poly<<QPoint(120,151);
+    *poly<<QPoint(110,152);
 
     painter->setPen(*pen);
-    painter->drawEllipse(100,100,25,25);
-    painter->drawEllipse(115,90,15,15);
+    painter->drawEllipse(80,150,25,25);
+    painter->drawEllipse(95,140,15,15);
     painter->setViewTransformEnabled(1);
 
     pen->setBrush(Qt::yellow);
@@ -79,15 +82,15 @@ void bird::up()
 
         setY(pos().y()+1);
         set_y(pos().y());
-        qDebug()<<"bird x : "<<pos().x();
-        qDebug()<<"bird y : "<<pos().y();
+        //qDebug()<<"bird x : "<<pos().x();
+        //qDebug()<<"bird y : "<<pos().y();
 
 }
 void bird::keyPressEvent(QKeyEvent *event)
 {
     if(event->key()==Qt::Key_Up)
     {
-        setY(pos().y()-100);
+        setY(pos().y()-50);
         set_y(pos().y());
     }
 }

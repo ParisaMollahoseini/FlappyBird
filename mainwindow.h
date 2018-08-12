@@ -31,6 +31,8 @@ public:
     gameover *gmover;
     QTimer * timer;
     void firstthings();
+    void barrierSize();
+
 public slots:
     void check();
     void startagain();

@@ -35,7 +35,7 @@ QPolygon *poly;
 QElapsedTimer *time;
 QTimer * timer;
 
-void paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget);
+    virtual void paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget);
 
 public slots:
     void up ();

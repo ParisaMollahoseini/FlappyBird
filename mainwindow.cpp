@@ -21,7 +21,7 @@ void MainWindow::firstthings()
 {
     gmover=new gameover;
 
-    barriers.resize(2);
+    barriers.resize(8);
 
     ui->gv->setFixedSize(900,900);//view pos
     ui->gv->setGeometry(0,0,900,900);
@@ -33,51 +33,58 @@ void MainWindow::firstthings()
 //
     ui->gv->setViewportUpdateMode(QGraphicsView::FullViewportUpdate);
 //
-   barriers[0] = new barrier();
-   barriers[1] = new barrier();
+    for (int i=0; i<barriers.size(); i++)
+    {
+        barriers[i] = new barrier();
+    }
+
 
 
    //scene
 
    sc=new QGraphicsScene;
     sc->addItem(mybird);
-    sc->addItem(barriers[0]);
-    sc->addItem(barriers[1]);
+
+    for (int i=0; i<barriers.size(); i++)
+    {
+        sc->addItem(barriers[i]);
+    }
 
     sc->setSceneRect(0,0,900,900);//scene pos
     QPixmap pix(":/game-background.jpg");
 
     sc->addPixmap(pix);
     mybird->setZValue(2);
-    barriers[0]->setZValue(2);
-    barriers[1]->setZValue(2);
+
+    for (int i=0; i<barriers.size(); i++)
+    {
+        barriers[i]->setZValue(2);
+    }
     //scene
     ui->gv->setScene(sc);
-    qDebug()<<"view "<<mybird->QGraphicsEllipseItem::brush().color();
+    //qDebug()<<"view "<<mybird->QGraphicsEllipseItem::brush().color();
     ui->gv->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
     ui->gv->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
 
-    mybird->setRect(ui->gv->pos().x()+50,ui->gv->pos().y(),25,25);
-    mybird->setX(50);mybird->setY(0);
-    qDebug()<<"birddddd  x:"<<mybird->QGraphicsEllipseItem::x();
+     mybird->setRect(80, 140, 40, 35);
+    //mybird->setRect(ui->gv->pos().x(),ui->gv->pos().y(),25,25);
+    //mybird->setX(30);mybird->setY(50);
+    barrierSize();
+   // qDebug()<<"birddddd  x:"<<mybird->QGraphicsEllipseItem::x();
     mybird->QGraphicsEllipseItem::setBrush(Qt::blue);
     mybird->update();
 
     ui->gv->setRenderHint(QPainter::Antialiasing);
 
-    barriers[0]->setRect(800,500, 60, 400);
-    barriers[0]->setBrush(Qt::blue);
-    barriers[0]->update();
-
-    barriers[1]->setRect(800,0, 60, 400);
-    barriers[1]->setBrush(Qt::green);
-    barriers[1]->update();
-
     sc->update();
     ui->gv->update();
     mybird->start();
-    barriers[0]->start();
-    barriers[1]->start();
+
+    for (int i=0; i<barriers.size(); i++)
+    {
+        barriers[i]->update();
+        barriers[i]->start();
+    }
 
       //connects
     connect(mybird,SIGNAL(end()),this,SLOT(endprogram()));
@@ -89,13 +96,29 @@ void MainWindow::firstthings()
     timer->start(10);
 }
 
+void MainWindow::barrierSize()
+{
+    barriers[0]->setRect(290, 0, 80, 250);
+    barriers[1]->setRect(290, 450, 80, 450);
+    barriers[2]->setRect(470, 0, 80, 350);
+    barriers[3]->setRect(470, 550, 80, 350);
+    barriers[4]->setRect(650, 0, 80, 500);
+    barriers[5]->setRect(650, 700, 80, 200);
+    barriers[6]->setRect(830, 0, 80, 400);
+    barriers[7]->setRect(830, 600, 80, 300);
+}
+
 void MainWindow::check()
 {
-    if (barriers[0]->collidesWithItem(mybird))
-        this->endprogram();
+    for (int i=0; i<barriers.size(); i++)
+    {
+        if (barriers[i]->collidesWithItem(mybird))
+        {
+            qDebug()<<i;
+            this->endprogram();
+        }
+    }
 
-    if (barriers[1]->collidesWithItem(mybird))
-        this->endprogram();
 }
 
 void MainWindow::startagain()
@@ -120,7 +143,10 @@ void MainWindow::endprogram()
 
     timer->stop();
     mybird->timer->stop();
-    barriers[0]->timer->stop();
-    barriers[1]->timer->stop();
+
+    for (int i=0; i<barriers.size(); i++)
+    {
+        barriers[i]->timer->stop();
+    }
 
 }
