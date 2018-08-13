@@ -3,4 +3,7 @@
         <file>sky.jpg</file>
         <file>sky111.jpg</file>
     </qresource>
+    <qresource prefix="/">
+        <file>game-background.jpg</file>
+    </qresource>
 </RCC>

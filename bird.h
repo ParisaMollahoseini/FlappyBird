@@ -3,15 +3,13 @@
 #include<QMainWindow>
 #include<QObject>
 #include<QGraphicsRectItem>
-<<<<<<< HEAD
 #include<QPainter>
-=======
 #include <QGraphicsEllipseItem>
->>>>>>> 72d4b0765a4fc2be224a9498bf49300ad7663b44
 #include<QKeyEvent>
 #include<QTimer>
 #include<QDebug>
-
+#include<QMessageBox>
+#include<QElapsedTimer>
 class bird:public QObject,public QGraphicsEllipseItem
 {
     Q_OBJECT
@@ -27,13 +25,25 @@ public:
     static int get_y();
     static void set_x(int pos);
     static void set_y(int pos);
+    QRectF boundingRect();
+static int bestscore;
+int score=0;
 
+QPen *pen;
+QPolygon *poly;
+
+QElapsedTimer *time;
+QTimer * timer;
+
+    virtual void paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget);
 
 public slots:
     void up ();
 
 void keyPressEvent(QKeyEvent *event);
-//void paint(QPainter *, const QStyleOptionGraphicsItem *, QWidget *);
-};
 
+signals:
+void end();
+
+};
 #endif // BIRD_H
