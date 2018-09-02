@@ -14,14 +14,14 @@
    <string>MainWindow</string>
   </property>
   <property name="styleSheet">
-   <string notr="true">background-image: url(:/flappybird/Picture1.jpg);</string>
+   <string notr="true">border-image: url(:/flappybird/flapjpg.jpg);</string>
   </property>
   <widget class="QWidget" name="centralwidget">
    <widget class="QPushButton" name="start">
     <property name="geometry">
      <rect>
-      <x>360</x>
-      <y>580</y>
+      <x>380</x>
+      <y>540</y>
       <width>131</width>
       <height>61</height>
      </rect>
@@ -35,7 +35,9 @@
      </font>
     </property>
     <property name="styleSheet">
-     <string notr="true">color: rgb(255, 255, 255);</string>
+     <string notr="true">background-color: rgb(170, 0, 255);
+border-image: url();
+color: rgb(0, 85, 255);</string>
     </property>
     <property name="text">
      <string>Start</string>
