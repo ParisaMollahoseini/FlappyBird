@@ -18,6 +18,7 @@ class bird:public QObject,public QGraphicsEllipseItem
     static int pos_y;
 
 public:
+    int shomarande=0;
     bird();
     ~bird();
     void start();
