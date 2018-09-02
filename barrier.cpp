@@ -25,26 +25,27 @@ void barrier::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, Q
     QPen * pen = new QPen(Qt::green);
     pen->setWidth(5);
     pen->setBrush(Qt::SolidPattern);
+QColor c(139,69,19);
 
-    painter->fillRect(300, 0, 60, 200, Qt::green);
-    painter->fillRect(290, 200, 80, 50, Qt::green);
-    painter->fillRect(300, 500, 60, 400, Qt::green);
-    painter->fillRect(290, 450, 80, 50, Qt::green);
+    painter->fillRect(300, 0, 60, 200, c);
+    painter->fillRect(290, 200, 80, 50, c);
+    painter->fillRect(300, 500, 60, 400,c);
+    painter->fillRect(290, 450, 80, 50, c);
 
-    painter->fillRect(480, 0, 60, 300, Qt::green);
-    painter->fillRect(470, 300, 80, 50, Qt::green);
-    painter->fillRect(480, 600, 60, 300, Qt::green);
-    painter->fillRect(470, 550, 80, 50, Qt::green);
+    painter->fillRect(480, 0, 60, 300, c);
+    painter->fillRect(470, 300, 80, 50, c);
+    painter->fillRect(480, 600, 60, 300,c);
+    painter->fillRect(470, 550, 80, 50, c);
 
-    painter->fillRect(660, 0, 60, 450, Qt::green);
-    painter->fillRect(650, 450, 80, 50, Qt::green);
-    painter->fillRect(660, 750, 60, 150, Qt::green);
-    painter->fillRect(650, 700, 80, 50, Qt::green);
+    painter->fillRect(660, 0, 60, 450, c);
+    painter->fillRect(650, 450, 80, 50, c);
+    painter->fillRect(660, 750, 60, 150, c);
+    painter->fillRect(650, 700, 80, 50, c);
 
-    painter->fillRect(840, 0, 60, 350, Qt::green);
-    painter->fillRect(830, 350, 80, 50, Qt::green);
-    painter->fillRect(840, 650, 60, 250, Qt::green);
-    painter->fillRect(830, 600, 80, 50, Qt::green);
+    painter->fillRect(840, 0, 60, 350,c);
+    painter->fillRect(830, 350, 80, 50, c);
+    painter->fillRect(840, 650, 60, 250, c);
+    painter->fillRect(830, 600, 80, 50, c);
 
     painter->setViewTransformEnabled(1);
 }

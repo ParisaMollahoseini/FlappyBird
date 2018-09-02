@@ -1,4 +1,5 @@
 #include "bird.h"
+#include<windows.h>
 #include<QDebug>
 #include<QGraphicsEffect>
 #include<QPainter>
@@ -79,19 +80,26 @@ void bird::up()
     {
         emit end();
     }
-
+    if(shomarande==1)
+    {
+    shomarande=0;
+//
+    }
         setY(pos().y()+1);
         set_y(pos().y());
-        //qDebug()<<"bird x : "<<pos().x();
-        //qDebug()<<"bird y : "<<pos().y();
-
 }
 void bird::keyPressEvent(QKeyEvent *event)
 {
+    qDebug()<<"key event";
     if(event->key()==Qt::Key_Up)
     {
-        setY(pos().y()-50);
-        set_y(pos().y());
+        for(int i=0;i<50;i++)
+        {
+            setY(pos().y()-1);
+            set_y(pos().y());
+        }
+
+        shomarande++;
     }
 }
 int bird::pos_x=0;

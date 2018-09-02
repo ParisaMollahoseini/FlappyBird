@@ -1,24 +1,34 @@
 #include "mainwindow.h"
-#include "ui_mainwindow.h"
 #include<QGraphicsPixmapItem>
 #include<QMessageBox>
 #include<QPushButton>
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
-    ui(new Ui::MainWindow)
+    ui(nullptr),
+  sui(nullptr)
 {
-    ui->setupUi(this);
-    firstthings();
+    //ui=new Ui::MainWindow;
+    sui=new Ui::Start;
+    sui->setupUi(this);
+
+    setGeometry(500,100,900,900);
+    connect(sui->start,&QPushButton::clicked,this,&MainWindow::first);
+
 
 }
 
 MainWindow::~MainWindow()
 {
+    delete gmover;
+    delete mybird;
+    delete sc;
+    delete timer;
     delete ui;
 }
 
 void MainWindow::firstthings()
 {
+
     gmover=new gameover;
 
     barriers.resize(8);
@@ -26,23 +36,23 @@ void MainWindow::firstthings()
     ui->gv->setFixedSize(900,900);//view pos
     ui->gv->setGeometry(0,0,900,900);
 
-   mybird = new bird();
+   mybird = new bird;
    mybird->time->restart();
    mybird->setFlag(QGraphicsItem::ItemIsFocusable);
    mybird->QGraphicsEllipseItem::setFocus();
+
 //
-    ui->gv->setViewportUpdateMode(QGraphicsView::FullViewportUpdate);
+    ui->gv->setViewportUpdateMode(QGraphicsView::FullViewportUpdate);//shape of bird
 //
+
     for (int i=0; i<barriers.size(); i++)
     {
         barriers[i] = new barrier();
     }
 
-
-
    //scene
 
-   sc=new QGraphicsScene;
+    sc=new QGraphicsScene;
     sc->addItem(mybird);
 
     for (int i=0; i<barriers.size(); i++)
@@ -61,20 +71,20 @@ void MainWindow::firstthings()
         barriers[i]->setZValue(2);
     }
     //scene
+
     ui->gv->setScene(sc);
-    //qDebug()<<"view "<<mybird->QGraphicsEllipseItem::brush().color();
+
     ui->gv->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
     ui->gv->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
 
-     mybird->setRect(80, 140, 40, 35);
-    //mybird->setRect(ui->gv->pos().x(),ui->gv->pos().y(),25,25);
-    //mybird->setX(30);mybird->setY(50);
+    mybird->setRect(80, 140, 40, 35);
+
     barrierSize();
-   // qDebug()<<"birddddd  x:"<<mybird->QGraphicsEllipseItem::x();
+
     mybird->QGraphicsEllipseItem::setBrush(Qt::blue);
     mybird->update();
 
-    ui->gv->setRenderHint(QPainter::Antialiasing);
+    ui->gv->setRenderHint(QPainter::Antialiasing);//paint
 
     sc->update();
     ui->gv->update();
@@ -86,7 +96,7 @@ void MainWindow::firstthings()
         barriers[i]->start();
     }
 
-      //connects
+    //connects
     connect(mybird,SIGNAL(end()),this,SLOT(endprogram()));
     connect(gmover,SIGNAL(emitsignalofstartingmainwindow()),this,SLOT(startagain()));
     //connects
@@ -106,6 +116,18 @@ void MainWindow::barrierSize()
     barriers[5]->setRect(650, 700, 80, 200);
     barriers[6]->setRect(830, 0, 80, 400);
     barriers[7]->setRect(830, 600, 80, 300);
+}
+
+void MainWindow::first()
+{
+    delete sui;
+    sui=nullptr;
+
+    ui=new Ui::MainWindow;
+    ui->setupUi(this);
+
+    firstthings();
+    show();
 }
 
 void MainWindow::check()
@@ -130,9 +152,10 @@ void MainWindow::startagain()
     show();
 }
 
+
 void MainWindow::endprogram()
 {
-    mybird->score=mybird->time->elapsed()/1000;
+    mybird->score=mybird->time->elapsed()/1000;//record time
     qDebug()<<"time is"<<mybird->time->elapsed();
     if(mybird->score>mybird->bestscore)
         mybird->bestscore=mybird->score;

@@ -38,7 +38,8 @@ HEADERS += \
 
 FORMS += \
         mainwindow.ui \
-    gameover.ui
+    gameover.ui \
+    start.ui
 
 RESOURCES += \
     pic.qrc
