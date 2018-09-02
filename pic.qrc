@@ -5,6 +5,8 @@
     </qresource>
     <qresource prefix="/">
         <file>game-background.jpg</file>
-        <file>../../../flappybird/flapjpg.jpg</file>
+        <file>../../../flappybird/start.jpg</file>
+        <file>../../../flappybird/start1.jpg</file>
+        <file>../../../flappybird/Picture1.jpg</file>
     </qresource>
 </RCC>
