@@ -1,0 +1,12 @@
+<RCC>
+    <qresource prefix="/new/prefix1">
+        <file>sky.jpg</file>
+        <file>sky111.jpg</file>
+    </qresource>
+    <qresource prefix="/">
+        <file>game-background.jpg</file>
+        <file>../../../flappybird/start.jpg</file>
+        <file>../../../flappybird/start1.jpg</file>
+        <file>../../../flappybird/Picture1.jpg</file>
+    </qresource>
+</RCC>

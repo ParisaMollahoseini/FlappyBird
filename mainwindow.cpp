@@ -8,6 +8,7 @@ MainWindow::MainWindow(QWidget *parent) :
     ui(nullptr),
   sui(nullptr)
 {
+<<<<<<< HEAD
         scorefile=new QFile("score.txt");
         sui=new Ui::Start;
         sui->setupUi(this);
@@ -21,6 +22,7 @@ MainWindow::MainWindow(QWidget *parent) :
 
 
 }
+
 MainWindow::~MainWindow()
 {
     delete gmover;
@@ -33,7 +35,9 @@ MainWindow::~MainWindow()
 void MainWindow::firstthings()
 {
 
+
     qDebug()<<"first things come....\n";
+
 
     gmover=new gameover;
 
@@ -105,7 +109,9 @@ void MainWindow::firstthings()
     //connects
     connect(mybird,SIGNAL(end()),this,SLOT(endprogram()));
     connect(gmover,SIGNAL(emitsignalofstartingmainwindow()),this,SLOT(startagain()));
+
 //    connect(gmover,SIGNAL(startpage()),this,SLOT(on_back_clicked()));
+
     //connects
 
     timer = new QTimer(this);
@@ -130,6 +136,10 @@ void MainWindow::first()//continue the game
     qDebug()<<"first come....\n";
 
     close();
+}
+void MainWindow::first()
+{
+
     delete sui;
     sui=nullptr;
 
@@ -162,12 +172,14 @@ void MainWindow::startagain()
 
     firstthings();
 
+
     show();
 }
 
 
 void MainWindow::endprogram()
 {
+
     ////
     scorefile->open(QIODevice::ReadOnly);
     QTextStream in(scorefile);
@@ -185,10 +197,12 @@ mybird->bestscore=x.toInt();
     scorefile->close();
     ////
 
+
     mybird->score=mybird->time->elapsed()/1000;//record time
     qDebug()<<"time is"<<mybird->time->elapsed();
     if(mybird->score>mybird->bestscore)
         mybird->bestscore=mybird->score;
+
 
 //score in file
     scorefile->open(QIODevice::WriteOnly | QIODevice::Append);
@@ -196,6 +210,7 @@ mybird->bestscore=x.toInt();
     out<<mybird->score<<endl;
     scorefile->close();
 //score in file
+
     close();
 
     gmover->start(mybird->score,mybird->bestscore);
@@ -207,6 +222,7 @@ mybird->bestscore=x.toInt();
     {
         barriers[i]->timer->stop();
     }
+
 //    connect(gmover,SIGNAL(startpage()),this,SLOT(on_back_clicked()));
 }
 
@@ -256,6 +272,10 @@ void MainWindow::on_back_clicked()
     sui->scorelabel->hide();
 
 }
+
+
+
+
 
 
 

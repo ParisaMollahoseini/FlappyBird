@@ -37,6 +37,7 @@ public:
     void firstthings();
     void barrierSize();
     QFile *scorefile;
+
 public slots:
     void first();
     void check();
@@ -47,10 +48,12 @@ public slots:
 
 public slots:
     void endprogram();
+
 private slots:
     void on_newgame_clicked();
     void on_yourscore_clicked();
     void on_back_clicked();
+
 };
 
 #endif // MAINWINDOW_H
