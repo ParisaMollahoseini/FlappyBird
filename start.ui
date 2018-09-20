@@ -191,6 +191,6 @@ background-color: qlineargradient(spread:pad, x1:0.179, y1:0.176818, x2:1, y2:1,
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
  </widget>
- <resources/>
+<resources/>
  <connections/>
 </ui>
