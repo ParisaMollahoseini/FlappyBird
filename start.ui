@@ -14,23 +14,17 @@
    <string>MainWindow</string>
   </property>
   <property name="styleSheet">
-<<<<<<< HEAD
+
    <string notr="true">background-image: url(:/Picture1.jpg);</string>
-=======
-   <string notr="true">background-image: url(:/flappybird/Picture1.jpg);</string>
->>>>>>> 70f586b5d1f78b5ffbe69e074d756049078cfc7e
   </property>
   <widget class="QWidget" name="centralwidget">
    <widget class="QPushButton" name="start">
     <property name="geometry">
      <rect>
-<<<<<<< HEAD
+
       <x>540</x>
       <y>480</y>
-=======
-      <x>360</x>
-      <y>580</y>
->>>>>>> 70f586b5d1f78b5ffbe69e074d756049078cfc7e
+
       <width>131</width>
       <height>61</height>
      </rect>
@@ -38,11 +32,9 @@
     <property name="font">
      <font>
       <family>Agency FB</family>
-<<<<<<< HEAD
+
       <pointsize>24</pointsize>
-=======
-      <pointsize>36</pointsize>
->>>>>>> 70f586b5d1f78b5ffbe69e074d756049078cfc7e
+
       <weight>75</weight>
       <bold>true</bold>
      </font>
@@ -51,7 +43,7 @@
      <string notr="true">color: rgb(255, 255, 255);</string>
     </property>
     <property name="text">
-<<<<<<< HEAD
+
      <string>Continue</string>
     </property>
    </widget>
@@ -184,12 +176,9 @@ background-color: qlineargradient(spread:pad, x1:0.179, y1:0.176818, x2:1, y2:1,
     </property>
     <property name="text">
      <string>Back</string>
-=======
      <string>Start</string>
->>>>>>> 70f586b5d1f78b5ffbe69e074d756049078cfc7e
     </property>
-   </widget>
-  </widget>
+
   <widget class="QMenuBar" name="menubar">
    <property name="geometry">
     <rect>

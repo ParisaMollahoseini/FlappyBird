@@ -14,11 +14,7 @@
    <string>MainWindow</string>
   </property>
   <property name="styleSheet">
-<<<<<<< HEAD
    <string notr="true">background-image: url(:/sky111.jpg);
-=======
-   <string notr="true">background-image: url(:/new/prefix1/sky111.jpg);
->>>>>>> 70f586b5d1f78b5ffbe69e074d756049078cfc7e
 </string>
   </property>
   <widget class="QWidget" name="centralwidget">
@@ -194,7 +190,7 @@ background-image: url();</string>
      <set>Qt::AlignCenter</set>
     </property>
    </widget>
-<<<<<<< HEAD
+
    <widget class="QPushButton" name="again_2">
     <property name="geometry">
      <rect>
@@ -227,10 +223,7 @@ background-color: qlineargradient(spread:pad, x1:0.179, y1:0.176818, x2:1, y2:1,
     <property name="text">
      <string>First Page</string>
     </property>
-   </widget>
-=======
->>>>>>> 70f586b5d1f78b5ffbe69e074d756049078cfc7e
-  </widget>
+
   <widget class="QMenuBar" name="menubar">
    <property name="geometry">
     <rect>

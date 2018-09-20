@@ -39,7 +39,7 @@ HEADERS += \
 FORMS += \
         mainwindow.ui \
     gameover.ui \
-    start.ui
+    Start.ui
 
 RESOURCES += \
-    pic.qrc
+    bird.qrc

@@ -8,7 +8,6 @@ MainWindow::MainWindow(QWidget *parent) :
     ui(nullptr),
   sui(nullptr)
 {
-<<<<<<< HEAD
         scorefile=new QFile("score.txt");
         sui=new Ui::Start;
         sui->setupUi(this);
@@ -131,18 +130,13 @@ void MainWindow::barrierSize()
     barriers[7]->setRect(830, 600, 80, 300);
 }
 
-void MainWindow::first()//continue the game
-{
-    qDebug()<<"first come....\n";
 
-    close();
-}
 void MainWindow::first()
 {
 
     delete sui;
     sui=nullptr;
-
+    close();
     ui=new Ui::MainWindow;
     ui->setupUi(this);
 

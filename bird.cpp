@@ -4,21 +4,13 @@
 #include<QGraphicsEffect>
 #include<QPainter>
 #include<QStyleOptionGraphicsItem>
-<<<<<<< HEAD
 #include<QMovie>
 #include<QLabel>
-=======
 
->>>>>>> 70f586b5d1f78b5ffbe69e074d756049078cfc7e
 bird::bird()
 {
     time=new QElapsedTimer;
     time->start();
-<<<<<<< HEAD
-
-    painter=new QPainter;
-=======
->>>>>>> 70f586b5d1f78b5ffbe69e074d756049078cfc7e
 }
 
 int bird::bestscore=0;
