@@ -1,6 +1,6 @@
 #ifndef MAINWINDOW_H
 #define MAINWINDOW_H
-
+#include <QFile>
 #include <QMainWindow>
 #include <QGraphicsRectItem>
 #include <QGraphicsView>
@@ -36,17 +36,21 @@ public:
     QTimer * timer;
     void firstthings();
     void barrierSize();
+    QFile *scorefile;
 
 public slots:
     void first();
     void check();
     void startagain();
 
-
-
-
 public slots:
     void endprogram();
+
+private slots:
+    void on_newgame_clicked();
+    void on_yourscore_clicked();
+    void on_back_clicked();
+
 };
 
 #endif // MAINWINDOW_H

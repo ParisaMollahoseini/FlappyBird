@@ -25,3 +25,11 @@ void gameover::on_again_clicked()
     close();
     emit emitsignalofstartingmainwindow();
 }
+
+void gameover::on_again_2_clicked()//?????????????????????
+{
+    close();
+    delete ui;
+
+    emit startpage();
+}

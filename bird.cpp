@@ -4,6 +4,8 @@
 #include<QGraphicsEffect>
 #include<QPainter>
 #include<QStyleOptionGraphicsItem>
+#include<QMovie>
+#include<QLabel>
 
 bird::bird()
 {
@@ -50,7 +52,8 @@ QRectF bird::boundingRect()
 return QRectF(10,10,50,50);
 }
 
-void bird::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget)
+
+void bird::paint(QPainter *painter1, const QStyleOptionGraphicsItem *option, QWidget *widget)
 {
     setFlag(QGraphicsItem::ItemUsesExtendedStyleOption);
 
@@ -64,15 +67,21 @@ void bird::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWid
     *poly<<QPoint(120,151);
     *poly<<QPoint(110,152);
 
-    painter->setPen(*pen);
-    painter->drawEllipse(80,150,25,25);
-    painter->drawEllipse(95,140,15,15);
-    painter->setViewTransformEnabled(1);
+
+    painter1->setPen(*pen);
+    painter1->drawEllipse(80,150,25,25);
+    painter1->drawEllipse(95,140,15,15);
+    painter1->setViewTransformEnabled(1);
 
     pen->setBrush(Qt::yellow);
-    painter->setPen(*pen);
-    painter->drawPolygon(*poly);
-   }
+    painter1->setPen(*pen);
+    painter1->drawPolygon(*poly);
+
+
+}
+
+
+
 
 void bird::up()
 {
@@ -85,8 +94,22 @@ void bird::up()
     shomarande=0;
 //
     }
+
+
         setY(pos().y()+1);
         set_y(pos().y());
+
+}
+
+void bird::rotate()
+{
+//    if(shomarande==0)
+//    painter->rotate(10);
+//    else
+//    painter->rotate(-10);
+
+//        setY(pos().y()+1);
+//        set_y(pos().y());
 }
 void bird::keyPressEvent(QKeyEvent *event)
 {

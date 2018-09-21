@@ -1,0 +1,12 @@
+INPUT(
+./debug\main.o
+./debug\mainwindow.o
+./debug\bird.o
+./debug\barrier.o
+./debug\gameover.o
+./debug\qrc_bird.o
+./debug\moc_mainwindow.o
+./debug\moc_bird.o
+./debug\moc_barrier.o
+./debug\moc_gameover.o
+);

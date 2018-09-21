@@ -1,0 +1,12 @@
+INPUT(
+./release\main.o
+./release\mainwindow.o
+./release\bird.o
+./release\barrier.o
+./release\gameover.o
+./release\qrc_bird.o
+./release\moc_mainwindow.o
+./release\moc_bird.o
+./release\moc_barrier.o
+./release\moc_gameover.o
+);

@@ -30,18 +30,22 @@ public:
 static int bestscore;
 int score=0;
 
+
 QPen *pen;
 QPolygon *poly;
 
 QElapsedTimer *time;
-QTimer * timer;
+
+QTimer * timer,*timerpaint;
+
 
     virtual void paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget);
 
 public slots:
     void up ();
 
-void keyPressEvent(QKeyEvent *event);
+    void rotate();
+    void keyPressEvent(QKeyEvent *event);
 
 signals:
 void end();

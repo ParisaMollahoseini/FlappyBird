@@ -18,9 +18,11 @@ public:
     Ui::gameover *ui;
 signals:
     void emitsignalofstartingmainwindow();
-
+    void startpage();
 private slots:
     void on_again_clicked();
+    void on_again_2_clicked();
+
 };
 
 #endif // GAMEOVER_H

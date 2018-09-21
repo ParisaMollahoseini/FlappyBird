@@ -2,17 +2,22 @@
 #include<QGraphicsPixmapItem>
 #include<QMessageBox>
 #include<QPushButton>
+#include<QTextStream>
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(nullptr),
   sui(nullptr)
 {
-    //ui=new Ui::MainWindow;
-    sui=new Ui::Start;
-    sui->setupUi(this);
+        scorefile=new QFile("score.txt");
+        sui=new Ui::Start;
+        sui->setupUi(this);
+        sui->back->hide();
+        sui->scorelist->hide();
+        sui->scorelabel->hide();
 
-    setGeometry(500,100,900,900);
-    connect(sui->start,&QPushButton::clicked,this,&MainWindow::first);
+        setGeometry(500,100,900,900);
+        connect(sui->start,&QPushButton::clicked,this,&MainWindow::first);
+
 
 
 }
@@ -28,6 +33,10 @@ MainWindow::~MainWindow()
 
 void MainWindow::firstthings()
 {
+
+
+    qDebug()<<"first things come....\n";
+
 
     gmover=new gameover;
 
@@ -99,6 +108,9 @@ void MainWindow::firstthings()
     //connects
     connect(mybird,SIGNAL(end()),this,SLOT(endprogram()));
     connect(gmover,SIGNAL(emitsignalofstartingmainwindow()),this,SLOT(startagain()));
+
+//    connect(gmover,SIGNAL(startpage()),this,SLOT(on_back_clicked()));
+
     //connects
 
     timer = new QTimer(this);
@@ -118,15 +130,18 @@ void MainWindow::barrierSize()
     barriers[7]->setRect(830, 600, 80, 300);
 }
 
+
 void MainWindow::first()
 {
+
     delete sui;
     sui=nullptr;
-
+    close();
     ui=new Ui::MainWindow;
     ui->setupUi(this);
 
     firstthings();
+
     show();
 }
 
@@ -148,17 +163,47 @@ void MainWindow::startagain()
     qDebug()<<"omad...";
     ui=new Ui::MainWindow;
     ui->setupUi(this);
+
     firstthings();
+
+
     show();
 }
 
 
 void MainWindow::endprogram()
 {
+
+    ////
+    scorefile->open(QIODevice::ReadOnly);
+    QTextStream in(scorefile);
+    in.seek(0);
+    while(!in.atEnd())
+    {
+        qDebug()<<"while";
+QString x=in.readLine();
+if(x.toInt()>mybird->bestscore)
+{
+     qDebug()<<"if";
+mybird->bestscore=x.toInt();
+}
+    }
+    scorefile->close();
+    ////
+
+
     mybird->score=mybird->time->elapsed()/1000;//record time
     qDebug()<<"time is"<<mybird->time->elapsed();
     if(mybird->score>mybird->bestscore)
         mybird->bestscore=mybird->score;
+
+
+//score in file
+    scorefile->open(QIODevice::WriteOnly | QIODevice::Append);
+    QTextStream out(scorefile);
+    out<<mybird->score<<endl;
+    scorefile->close();
+//score in file
 
     close();
 
@@ -172,4 +217,69 @@ void MainWindow::endprogram()
         barriers[i]->timer->stop();
     }
 
+//    connect(gmover,SIGNAL(startpage()),this,SLOT(on_back_clicked()));
 }
+
+void MainWindow::on_newgame_clicked()//click on new game
+{
+    qDebug()<<"first come newgame....\n";
+    close();
+    delete sui;
+    sui=nullptr;
+
+    scorefile->open(QIODevice::WriteOnly);
+    scorefile->close();
+
+    ui=new Ui::MainWindow;
+    ui->setupUi(this);
+
+    firstthings();
+
+    show();
+}
+void MainWindow::on_yourscore_clicked()
+{
+    sui->newgame->hide();
+    sui->start->hide();
+    sui->yourscore->hide();
+    sui->back->show();
+    sui->scorelist->show();
+    sui->scorelist->adjustSize();
+
+    scorefile->open(QIODevice::ReadOnly);
+    QTextStream in(scorefile);
+    int no=0;
+    while(!in.atEnd())
+    {
+        no++;
+sui->scorelist->addItem(QString::number(no)+" : "+in.readLine());
+
+    }
+
+    sui->scorelabel->show();
+}
+void MainWindow::on_back_clicked()
+{
+
+    sui->back->hide();
+    sui->scorelist->hide();
+    sui->newgame->show();
+    sui->start->show();
+    sui->yourscore->show();
+    sui->scorelabel->hide();
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
