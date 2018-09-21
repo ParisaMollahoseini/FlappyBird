@@ -43,9 +43,6 @@ public slots:
     void check();
     void startagain();
 
-
-
-
 public slots:
     void endprogram();
 

@@ -248,9 +248,12 @@ void MainWindow::on_yourscore_clicked()
 
     scorefile->open(QIODevice::ReadOnly);
     QTextStream in(scorefile);
+    int no=0;
     while(!in.atEnd())
     {
-sui->scorelist->addItem(in.readLine());
+        no++;
+sui->scorelist->addItem(QString::number(no)+" : "+in.readLine());
+
     }
 
     sui->scorelabel->show();

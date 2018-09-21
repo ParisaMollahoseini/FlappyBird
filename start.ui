@@ -14,46 +14,16 @@
    <string>MainWindow</string>
   </property>
   <property name="styleSheet">
-
    <string notr="true">background-image: url(:/Picture1.jpg);</string>
   </property>
   <widget class="QWidget" name="centralwidget">
-   <widget class="QPushButton" name="start">
-    <property name="geometry">
-     <rect>
-
-      <x>540</x>
-      <y>480</y>
-
-      <width>131</width>
-      <height>61</height>
-     </rect>
-    </property>
-    <property name="font">
-     <font>
-      <family>Agency FB</family>
-
-      <pointsize>24</pointsize>
-
-      <weight>75</weight>
-      <bold>true</bold>
-     </font>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">color: rgb(255, 255, 255);</string>
-    </property>
-    <property name="text">
-
-     <string>Continue</string>
-    </property>
-   </widget>
    <widget class="QPushButton" name="newgame">
     <property name="geometry">
      <rect>
-      <x>160</x>
-      <y>480</y>
-      <width>151</width>
-      <height>61</height>
+      <x>150</x>
+      <y>560</y>
+      <width>171</width>
+      <height>71</height>
      </rect>
     </property>
     <property name="font">
@@ -71,13 +41,13 @@
      <string>New Game</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="yourscore">
+   <widget class="QPushButton" name="start">
     <property name="geometry">
      <rect>
-      <x>330</x>
-      <y>590</y>
-      <width>191</width>
-      <height>61</height>
+      <x>530</x>
+      <y>560</y>
+      <width>171</width>
+      <height>71</height>
      </rect>
     </property>
     <property name="font">
@@ -92,22 +62,46 @@
      <string notr="true">color: rgb(255, 255, 255);</string>
     </property>
     <property name="text">
-     <string> YourScores</string>
+     <string>Continue</string>
     </property>
    </widget>
-   <widget class="QLabel" name="scorelabel">
+   <widget class="QPushButton" name="yourscore">
     <property name="geometry">
      <rect>
-      <x>240</x>
-      <y>40</y>
-      <width>361</width>
-      <height>61</height>
+      <x>330</x>
+      <y>660</y>
+      <width>181</width>
+      <height>71</height>
      </rect>
     </property>
     <property name="font">
      <font>
       <family>Agency FB</family>
-      <pointsize>26</pointsize>
+      <pointsize>24</pointsize>
+      <weight>75</weight>
+      <bold>true</bold>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">color: rgb(255, 255, 255);</string>
+    </property>
+    <property name="text">
+     <string>Your Scores</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="scorelabel">
+    <property name="geometry">
+     <rect>
+      <x>300</x>
+      <y>90</y>
+      <width>261</width>
+      <height>101</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Agency FB</family>
+      <pointsize>24</pointsize>
       <weight>75</weight>
       <bold>true</bold>
      </font>
@@ -125,30 +119,44 @@
    <widget class="QListWidget" name="scorelist">
     <property name="geometry">
      <rect>
-      <x>230</x>
-      <y>130</y>
-      <width>391</width>
-      <height>501</height>
+      <x>330</x>
+      <y>220</y>
+      <width>221</width>
+      <height>192</height>
      </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>8514oem</family>
+      <pointsize>12</pointsize>
+      <weight>75</weight>
+      <bold>true</bold>
+     </font>
     </property>
     <property name="styleSheet">
      <string notr="true">background-image: url();
+color: rgb(0, 85, 0);
 border-color: qlineargradient(spread:pad, x1:0.179, y1:0.176818, x2:1, y2:1, stop:0 rgba(40, 212, 187, 255), stop:1 rgba(139, 231, 139, 255));
 border-color: rgb(170, 255, 255);
-background-color: qlineargradient(spread:pad, x1:0.179, y1:0.176818, x2:1, y2:1, stop:0 rgba(40, 212, 187, 255), stop:1 rgba(139, 231, 139, 255));
-</string>
+background-color: qlineargradient(spread:pad, x1:0.179, y1:0.176818, x2:1, y2:1, stop:0 rgba(40, 212, 187, 255), stop:1 rgba(139, 231, 139, 255));</string>
+    </property>
+    <property name="frameShape">
+     <enum>QFrame::StyledPanel</enum>
+    </property>
+    <property name="frameShadow">
+     <enum>QFrame::Sunken</enum>
+    </property>
+    <property name="sizeAdjustPolicy">
+     <enum>QAbstractScrollArea::AdjustIgnored</enum>
     </property>
     <property name="selectionMode">
      <enum>QAbstractItemView::NoSelection</enum>
     </property>
-    <property name="textElideMode">
-     <enum>Qt::ElideMiddle</enum>
-    </property>
     <property name="flow">
      <enum>QListView::TopToBottom</enum>
     </property>
-    <property name="layoutMode">
-     <enum>QListView::SinglePass</enum>
+    <property name="resizeMode">
+     <enum>QListView::Adjust</enum>
     </property>
     <property name="viewMode">
      <enum>QListView::IconMode</enum>
@@ -157,10 +165,10 @@ background-color: qlineargradient(spread:pad, x1:0.179, y1:0.176818, x2:1, y2:1,
    <widget class="QPushButton" name="back">
     <property name="geometry">
      <rect>
-      <x>670</x>
-      <y>300</y>
-      <width>93</width>
-      <height>141</height>
+      <x>650</x>
+      <y>250</y>
+      <width>101</width>
+      <height>161</height>
      </rect>
     </property>
     <property name="font">
@@ -176,9 +184,9 @@ background-color: qlineargradient(spread:pad, x1:0.179, y1:0.176818, x2:1, y2:1,
     </property>
     <property name="text">
      <string>Back</string>
-     <string>Start</string>
     </property>
-
+   </widget>
+  </widget>
   <widget class="QMenuBar" name="menubar">
    <property name="geometry">
     <rect>
@@ -191,6 +199,6 @@ background-color: qlineargradient(spread:pad, x1:0.179, y1:0.176818, x2:1, y2:1,
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
  </widget>
-<resources/>
+ <resources/>
  <connections/>
 </ui>
