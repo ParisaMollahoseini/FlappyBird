@@ -228,7 +228,7 @@ void MainWindow::on_newgame_clicked()//click on new game
     sui=nullptr;
 
     QFile::remove("score.txt");
-    scorefile=new QFile("score.txt);
+    scorefile=new QFile("score.txt");
     scorefile->open(QIODevice::WriteOnly);
     scorefile->close();
 
