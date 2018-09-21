@@ -227,6 +227,8 @@ void MainWindow::on_newgame_clicked()//click on new game
     delete sui;
     sui=nullptr;
 
+    QFile::remove("score.txt");
+    scorefile=new QFile("score.txt);
     scorefile->open(QIODevice::WriteOnly);
     scorefile->close();
 
@@ -246,6 +248,7 @@ void MainWindow::on_yourscore_clicked()
     sui->scorelist->show();
     sui->scorelist->adjustSize();
 
+    
     scorefile->open(QIODevice::ReadOnly);
     QTextStream in(scorefile);
     int no=0;
