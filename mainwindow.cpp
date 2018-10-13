@@ -108,6 +108,7 @@ void MainWindow::firstthings()
     //connects
     connect(mybird,SIGNAL(end()),this,SLOT(endprogram()));
     connect(gmover,SIGNAL(emitsignalofstartingmainwindow()),this,SLOT(startagain()));
+    connect(gmover,SIGNAL(startpage()),this,SLOT(gotostartpagefromgameover()));
 
 //    connect(gmover,SIGNAL(startpage()),this,SLOT(on_back_clicked()));
 
@@ -217,7 +218,27 @@ mybird->bestscore=x.toInt();
         barriers[i]->timer->stop();
     }
 
-//    connect(gmover,SIGNAL(startpage()),this,SLOT(on_back_clicked()));
+    connect(gmover,SIGNAL(startpage()),this,SLOT(gotostartpagefromgameover()));
+}
+
+void MainWindow::gotostartpagefromgameover()
+{
+    scorefile=new QFile("score.txt");
+    sui=new Ui::Start;
+    sui->setupUi(this);
+    connect(sui->start,&QPushButton::clicked,this,&MainWindow::first);
+    connect(sui->newgame,&QPushButton::clicked,this,&MainWindow::on_newgame_clicked);
+    connect(sui->yourscore,&QPushButton::clicked,this,&MainWindow::on_yourscore_clicked);
+    connect(sui->back,&QPushButton::clicked,this,&MainWindow::on_back_clicked);
+
+    show();
+    sui->back->hide();
+    sui->scorelist->hide();
+    sui->newgame->show();
+    sui->start->show();
+    sui->yourscore->show();
+    sui->scorelabel->hide();
+
 }
 
 void MainWindow::on_newgame_clicked()//click on new game
@@ -227,8 +248,10 @@ void MainWindow::on_newgame_clicked()//click on new game
     delete sui;
     sui=nullptr;
 
-    scorefile->open(QIODevice::WriteOnly);
-    scorefile->close();
+    QFile::remove("score.txt");
+    scorefile=new QFile("score.txt");
+    mybird->bestscore=0;
+    //mybird->score=0;
 
     ui=new Ui::MainWindow;
     ui->setupUi(this);

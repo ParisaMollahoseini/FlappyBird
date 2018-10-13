@@ -26,8 +26,9 @@ void gameover::on_again_clicked()
     emit emitsignalofstartingmainwindow();
 }
 
-void gameover::on_again_2_clicked()//?????????????????????
+void gameover::on_again_2_clicked()
 {
+
     close();
     delete ui;
 

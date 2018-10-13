@@ -45,8 +45,7 @@ public slots:
 
 public slots:
     void endprogram();
-
-private slots:
+    void gotostartpagefromgameover();
     void on_newgame_clicked();
     void on_yourscore_clicked();
     void on_back_clicked();

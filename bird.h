@@ -34,7 +34,7 @@ int score=0;
 QPen *pen;
 QPolygon *poly;
 
-QElapsedTimer *time;
+QElapsedTimer *time;//for score
 
 QTimer * timer,*timerpaint;
 
